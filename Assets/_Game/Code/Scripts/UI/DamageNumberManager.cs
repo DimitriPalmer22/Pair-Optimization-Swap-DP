@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Alchemy.Inspector;
+using UnityEngine;
 
 public class DamageNumberManager : MonoBehaviour
 {
     [SerializeField] private DamageNumber damageNumberPrefab;
-    [SerializeField] private Transform lookAtTransform;
+    [SerializeField, Required] private Transform lookAtTransform;
     
     public void SpawnDamageNumber(ActorHealthEventArgs args)
     {

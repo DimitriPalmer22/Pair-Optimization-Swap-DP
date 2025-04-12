@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefabs:
   - {fileID: 8045676227882708339, guid: def2610945e0df743b2473f931ae85f4, type: 3}
+  - {fileID: 1895073923669072765, guid: 20ca7a238646e82429357f95b79e8840, type: 3}
+  - {fileID: 4305898634900116411, guid: 7d1c07ac0bc8e9647b9ae41aa4c97464, type: 3}

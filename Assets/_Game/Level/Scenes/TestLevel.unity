@@ -684,110 +684,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1281054057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1281054058}
-  - component: {fileID: 1281054060}
-  - component: {fileID: 1281054059}
-  - component: {fileID: 1281054061}
-  m_Layer: 0
-  m_Name: Damage Numbers Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1281054058
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281054057}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1281054059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281054057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bd5bdd3385443c944650db1df474cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventScriptableObject: {fileID: 11400000, guid: 353a5d041e26c644b92e731d2c802b7c, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1281054060}
-        m_TargetAssemblyTypeName: DamageNumberManager, Assembly-CSharp
-        m_MethodName: SpawnDamageNumber
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Enemy Took Damage!
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1281054060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281054057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c7491588ce48f489e4f9146507ebf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageNumberPrefab: {fileID: 215566157941972508, guid: cec2c3c05c234fe49935987ac7e1b31e, type: 3}
-  lookAtTransform: {fileID: 503027881}
---- !u!114 &1281054061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281054057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bd5bdd3385443c944650db1df474cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventScriptableObject: {fileID: 11400000, guid: aa655c2b39b3dcf4a9f2f541f8da5c7d, type: 2}
-  onEventRaised:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1281054060}
-        m_TargetAssemblyTypeName: DamageNumberManager, Assembly-CSharp
-        m_MethodName: SpawnDamageNumber
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Enemy Took Damage!
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1332214494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +950,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89f3a86704fc12246971ee3f14edfbc3, type: 3}
+--- !u!1001 &6656052473455640694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4076610103842276296, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: lookAtTransform
+      value: 
+      objectReference: {fileID: 503027881}
+    - target: {fileID: 5498212003932649110, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_Name
+      value: Damage Numbers Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8550422549004756498, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca52c3f8488ea924badead5ffabf4fd1, type: 3}
 --- !u!1001 &9063933786370609449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1161,7 +1118,7 @@ SceneRoots:
   - {fileID: 727954293}
   - {fileID: 1332958430592020906}
   - {fileID: 1332214495}
-  - {fileID: 1281054058}
+  - {fileID: 6656052473455640694}
   - {fileID: 344348073}
   - {fileID: 248949868952210901}
   - {fileID: 1142047136}
