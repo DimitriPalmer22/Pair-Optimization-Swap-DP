@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 8400915446146549800}
   - component: {fileID: 2293818892722577488}
   - component: {fileID: 1618707518274165000}
+  - component: {fileID: 8156196850576799661}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -231,6 +232,31 @@ MonoBehaviour:
               m_StringArgument: 
               m_BoolArgument: 0
             m_CallState: 2
+    <InvincibilityTimer>k__BackingField:
+      <MinValue>k__BackingField: 0
+      <MaxValue>k__BackingField: 3
+      <CurrentValue>k__BackingField: 0
+      <OnValueChanged>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8400915446146549800}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetInvincibleForSeconds
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHealed:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -304,3 +330,18 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8156196850576799661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253583813700644746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a0805050f514aa4bc22396605ba83df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderersToFlash:
+  - {fileID: 7810085726434599998}
+  flashDuration: 0.0625

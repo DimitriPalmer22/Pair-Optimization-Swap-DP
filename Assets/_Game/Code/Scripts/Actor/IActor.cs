@@ -4,4 +4,6 @@
     
     public void ChangeHealth(float amount);
     public void CheckForDeath(RangedValue health);
+
+    public void SetInvincibleForSeconds(float seconds);
 }

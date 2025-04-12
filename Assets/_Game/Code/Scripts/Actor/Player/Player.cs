@@ -9,9 +9,15 @@ public class Player : MonoBehaviour, IActor
     public static Player Instance { get; private set; }
 
     [SerializeField] private ActorInfo actorInfo;
+
+    [SerializeField] private UnityEvent<Player, int> onDamaged;
+    [SerializeField] private UnityEvent<Player, int> onHealed;
+    
     [SerializeField] private UnityEvent<Player> onDeath;
 
     public ActorInfo ActorInfo => actorInfo;
+    
+    public bool IsInvincible => actorInfo.InvincibilityTimer.CurrentValue > 0;
 
     private void Awake()
     {
@@ -38,6 +44,12 @@ public class Player : MonoBehaviour, IActor
             Instance = null;
     }
 
+    private void Update()
+    {
+        // Tick the invincibility timer
+        actorInfo.InvincibilityTimer.ChangeValue(-Time.deltaTime);
+    }
+
     #region Public Functions
 
     public void CheckForDeath(RangedValue health)
@@ -54,7 +66,28 @@ public class Player : MonoBehaviour, IActor
     }
 
     [Button]
-    public void ChangeHealth(float amount) => actorInfo.Health.ChangeValue(amount);
+    public void ChangeHealth(float amount)
+    {
+        // If the invincibility timer is active,
+        // and the amount is negative, return
+        if (IsInvincible && amount < 0)
+            return;
+
+        // Change the health value
+        actorInfo.Health.ChangeValue(amount);
+        
+        // Invoke the appropriate event
+        if (amount < 0)
+            onDamaged?.Invoke(this, (int) -amount);
+        else
+            onHealed?.Invoke(this, (int) amount);
+    }
+    
+    public void SetInvincibleForSeconds(float seconds)
+    {
+        // Set the invincibility timer to the specified seconds
+        actorInfo.InvincibilityTimer.SetValue(seconds);
+    }
 
     #endregion
 }

@@ -7,5 +7,6 @@ using UnityEngine.Events;
 public class ActorInfo
 {
     [field: SerializeField] public RangedValue Health { get; private set; }
+    [field: SerializeField] public RangedValue InvincibilityTimer { get; private set; }
     // [field: SerializeField] public RangedValue DodgeCooldown { get; private set; }
 }
