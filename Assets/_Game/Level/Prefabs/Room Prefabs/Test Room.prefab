@@ -440,7 +440,7 @@ MonoBehaviour:
     - {fileID: 5214177723660317164}
     - {fileID: 7280165319144045657}
     - {fileID: 188339810218956769}
-  itemSpawnChance: 0.3
+  itemSpawnChance: 0.5
   itemPrefabList: {fileID: 11400000, guid: d9c49998893501841a53e230b6279380, type: 2}
   nextRooms: {fileID: 11400000, guid: a06a9426d8c97014a888e39444bd6648, type: 2}
   onRoomStarted:
