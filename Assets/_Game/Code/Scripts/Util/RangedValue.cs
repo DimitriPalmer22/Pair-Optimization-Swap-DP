@@ -26,6 +26,15 @@ public class RangedValue
     
     public float Percentage => Mathf.InverseLerp(MinValue, MaxValue, CurrentValue);
 
+    public void ForceValue(float value)
+    {
+        // Set the current value to the specified value
+        CurrentValue = Mathf.Clamp(value, MinValue, MaxValue);
+
+        // Invoke the event
+        OnValueChanged?.Invoke(this);
+    }
+    
     [Button, TabGroup(TAB_GROUP, "Functions")]
     public bool SetValue(float value)
     {

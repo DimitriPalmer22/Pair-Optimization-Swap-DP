@@ -15,11 +15,14 @@ public class Player : MonoBehaviour, IActor
 
     private void Awake()
     {
-        // Set the initial health value
-        actorInfo.Health.SetValue(actorInfo.Health.MaxValue);
-
         // Subscribe to the health value changed event
         actorInfo.Health.OnValueChanged.AddListener(CheckForDeath);
+    }
+
+    private void Start()
+    {
+        // Set the initial health value
+        actorInfo.Health.ForceValue(actorInfo.Health.MaxValue);
     }
 
     private void OnEnable()

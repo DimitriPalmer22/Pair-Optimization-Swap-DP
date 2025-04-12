@@ -218,7 +218,19 @@ MonoBehaviour:
       <CurrentValue>k__BackingField: 100
       <OnValueChanged>k__BackingField:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 11400000, guid: e2a4f7a9ca879a34581aa70d8cd5e60b, type: 2}
+            m_TargetAssemblyTypeName: EventScriptableObject`1[[RangedValue, Assembly-CSharp
+            m_MethodName: RaiseEvent
+            m_Mode: 0
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls:

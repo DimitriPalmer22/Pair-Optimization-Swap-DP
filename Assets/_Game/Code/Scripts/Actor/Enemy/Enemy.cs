@@ -13,11 +13,14 @@ public class Enemy : MonoBehaviour, IActor
 
     private void Awake()
     {
-        // Set the initial health value
-        actorInfo.Health.SetValue(actorInfo.Health.MaxValue);
-
         // Subscribe to the health value changed event
         actorInfo.Health.OnValueChanged.AddListener(CheckForDeath);
+    }
+
+    private void Start()
+    {
+        // Set the initial health value
+        actorInfo.Health.ForceValue(actorInfo.Health.MaxValue);
     }
 
     public void CheckForDeath(RangedValue arg0)
@@ -25,10 +28,10 @@ public class Enemy : MonoBehaviour, IActor
         // Return if the health is over 0
         if (actorInfo.Health.CurrentValue > 0)
             return;
-        
+
         // Invoke the death event
         onDeath.Invoke(this);
-        
+
         // Die
         Die();
     }
