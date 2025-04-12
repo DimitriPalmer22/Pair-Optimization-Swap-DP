@@ -54,7 +54,7 @@ public class PlayerProjectile : MonoBehaviour
             if (other.TryGetComponent(out Enemy enemy))
                 enemy.ChangeHealth(-damage);
         }
-        
+
         // Kill the projectile
         KillProjectile();
     }
@@ -69,5 +69,8 @@ public class PlayerProjectile : MonoBehaviour
 
         // Set the direction of the projectile
         _direction = direction;
+
+        // Modify the damage
+        damage += playerAttack.DamageAdded.CurrentValue;
     }
 }

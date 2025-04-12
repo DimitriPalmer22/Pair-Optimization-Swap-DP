@@ -15,12 +15,15 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField, Required] private PlayerProjectile projectilePrefab;
 
     [SerializeField] private float rotationSpeed = 100f;
-    
+
     [SerializeField] private RangedValue attackCooldown;
+    [field: SerializeField] public RangedValue DamageAdded { get; private set; }
 
     [SerializeField] private UnityEvent<PlayerAttack> onAttack;
 
     #endregion
+
+    public RangedValue AttackCooldown => attackCooldown;
 
     #region Private Fields
 
@@ -139,13 +142,13 @@ public class PlayerAttack : MonoBehaviour
         // Return if the attack cooldown is > 0
         if (attackCooldown.CurrentValue > 0)
             return;
-        
+
         // Reset the attack cooldown
         attackCooldown.ChangeValue(attackCooldown.MaxValue);
-        
+
         // Instantiate the projectile
         var projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        
+
         // Call the shoot method on the projectile
         projectile.Shoot(this, firePoint.position, firePoint.forward);
     }

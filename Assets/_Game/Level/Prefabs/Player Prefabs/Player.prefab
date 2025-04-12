@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31a2053226b417fbe072c842d62ac89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 12
 --- !u!114 &1618707518274165000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +267,13 @@ MonoBehaviour:
     <MinValue>k__BackingField: 0
     <MaxValue>k__BackingField: 0.25
     <CurrentValue>k__BackingField: 0
+    <OnValueChanged>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  <DamageAdded>k__BackingField:
+    <MinValue>k__BackingField: 0
+    <MaxValue>k__BackingField: 0
+    <CurrentValue>k__BackingField: 1000
     <OnValueChanged>k__BackingField:
       m_PersistentCalls:
         m_Calls: []

@@ -43,4 +43,22 @@ public class RangedValue
 
     [Button, TabGroup(TAB_GROUP, "Functions")]
     public void ChangeValue(float amount) => SetValue(CurrentValue + amount);
+    
+    public void ChangeMaxValue(float amount)
+    {
+        MaxValue += amount;
+
+        // If the current value is greater than the max value, set it to the max value
+        if (CurrentValue > MaxValue)
+            SetValue(MaxValue);
+    }
+    
+    public void ChangeMinValue(float amount)
+    {
+        MinValue += amount;
+
+        // If the current value is less than the min value, set it to the min value
+        if (CurrentValue < MinValue)
+            SetValue(MinValue);
+    }
 }
