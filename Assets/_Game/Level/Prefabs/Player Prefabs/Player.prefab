@@ -272,8 +272,8 @@ MonoBehaviour:
         m_Calls: []
   <DamageAdded>k__BackingField:
     <MinValue>k__BackingField: 0
-    <MaxValue>k__BackingField: 0
-    <CurrentValue>k__BackingField: 1000
+    <MaxValue>k__BackingField: 1000
+    <CurrentValue>k__BackingField: 0
     <OnValueChanged>k__BackingField:
       m_PersistentCalls:
         m_Calls: []

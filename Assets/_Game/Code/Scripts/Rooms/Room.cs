@@ -9,6 +9,9 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private RoomStructureData roomStructureData;
 
+    [SerializeField, Range(0, 1)] private float itemSpawnChance = 0.5f;
+    [SerializeField, Required] private ItemPrefabList itemPrefabList;
+
     [SerializeField, Required] private RoomPrefabList nextRooms;
 
     [SerializeField] private UnityEvent<Room> onRoomStarted;
@@ -34,7 +37,7 @@ public class Room : MonoBehaviour
             Debug.LogWarning("Room is already cleared. Cannot start again.", this);
             return;
         }
-        
+
         // If the previous room is not null, destroy it
         if (_previousRoom != null)
         {
@@ -58,8 +61,21 @@ public class Room : MonoBehaviour
         // Set the room as cleared
         _isRoomCleared = true;
 
-        // Invoke the room cleared event
-        onRoomCleared?.Invoke(this);
+        // Based on the item spawn chance, spawn an item
+        if (UnityEngine.Random.value <= itemSpawnChance)
+        {
+            // Get a random item prefab from the list
+            var itemPrefabs = itemPrefabList.ItemPrefabs;
+            var randomItemPrefab = itemPrefabs[UnityEngine.Random.Range(0, itemPrefabs.Count)];
+            var item = Instantiate(randomItemPrefab, roomStructureData.itemSpawnLocation.position, Quaternion.identity);
+
+            // Connect the onItemPicked event to the room cleared event
+            item.OnPickUp.AddListener(_ => onRoomCleared?.Invoke(this));
+        }
+
+        // If the item is not spawned, just invoke the room cleared event
+        else
+            onRoomCleared?.Invoke(this);
     }
 
     [Button]
@@ -146,10 +162,10 @@ public class Room : MonoBehaviour
 
         // Get the position offset from the next room's position and its left door
         var nextRoomOffset = nextRoom.transform.position - nextRoom.roomStructureData.leftDoorTransform.position;
-        
+
         // Set the next room's position to be right next to this room's right door
         nextRoom.transform.position = roomStructureData.rightDoorTransform.position + nextRoomOffset;
-        
+
         // Set the next room's previous room to this room
         nextRoom._previousRoom = this;
     }
