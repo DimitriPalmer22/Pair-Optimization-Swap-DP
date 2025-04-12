@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2799076729437176812}
   - component: {fileID: 4768496748659355267}
   - component: {fileID: 2613640332875634255}
-  - component: {fileID: 7678295771766385299}
   - component: {fileID: 7857618066751819982}
+  - component: {fileID: 7678295771766385299}
   m_Layer: 8
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -112,53 +112,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7678295771766385299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2814758430091591580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bd74c83ab8424c8a5068204a5f43e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorInfo:
-    <Health>k__BackingField:
-      <MinValue>k__BackingField: 0
-      <MaxValue>k__BackingField: 100
-      <CurrentValue>k__BackingField: 100
-      <OnValueChanged>k__BackingField:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 7678295771766385299}
-            m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-            m_MethodName: LogHealth
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 88944dd581488444b9e936d0185e3a9b, type: 2}
-        m_TargetAssemblyTypeName: LoggerScriptableObject, Assembly-CSharp
-        m_MethodName: Log
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Enemy Died!
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!54 &7857618066751819982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,3 +139,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7678295771766385299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814758430091591580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bd74c83ab8424c8a5068204a5f43e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorInfo:
+    <Health>k__BackingField:
+      <MinValue>k__BackingField: 0
+      <MaxValue>k__BackingField: 100
+      <CurrentValue>k__BackingField: 100
+      <OnValueChanged>k__BackingField:
+        m_PersistentCalls:
+          m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 88944dd581488444b9e936d0185e3a9b, type: 2}
+        m_TargetAssemblyTypeName: LoggerScriptableObject, Assembly-CSharp
+        m_MethodName: Log
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Enemy Died!
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour, IActor
 {
     [SerializeField] private ActorInfo actorInfo;
 
-    [SerializeField] private UnityEvent<Player> onDeath;
+    [SerializeField] public UnityEvent<Enemy> onDeath;
 
     public ActorInfo ActorInfo => actorInfo;
 
@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour, IActor
         // Return if the health is over 0
         if (actorInfo.Health.CurrentValue > 0)
             return;
+        
+        // Invoke the death event
+        onDeath.Invoke(this);
         
         // Die
         Die();

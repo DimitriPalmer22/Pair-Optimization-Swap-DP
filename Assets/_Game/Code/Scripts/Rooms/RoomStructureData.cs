@@ -9,5 +9,5 @@ public class RoomStructureData
     [field: SerializeField, Required] public Transform rightDoorTransform { get; private set; }
     [field: SerializeField, Required] public Transform itemSpawnLocation { get; private set; }
 
-    [field: SerializeField, Required] public Transform[] enemySpawnLocations { get; private set; }
+    [field: SerializeField, Required] public RoomEnemySpawner[] enemySpawners { get; private set; }
 }

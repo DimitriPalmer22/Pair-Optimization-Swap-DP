@@ -1,7 +1,7 @@
 ﻿using Alchemy.Inspector;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LoggerScriptableObject", menuName = "ScriptableObjects/LoggerScriptableObject")]
+// [CreateAssetMenu(fileName = "LoggerScriptableObject", menuName = "ScriptableObjects/LoggerScriptableObject")]
 public class LoggerScriptableObject : ScriptableObject
 {
     [Button]
