@@ -5,11 +5,25 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, IActor
 {
+    #region Serialized Fields
+
     [SerializeField] private ActorInfo actorInfo;
 
+    [Space, SerializeField] private UnityEvent<ActorHealthEventArgs> onDamaged;
+    [SerializeField] private UnityEvent<ActorHealthEventArgs> onHealed;
     [SerializeField] public UnityEvent<Enemy> onDeath;
 
+    #endregion
+
+    #region Getters
+
+    public GameObject GameObject => gameObject;
+
     public ActorInfo ActorInfo => actorInfo;
+
+    public bool IsInvincible => actorInfo.InvincibilityTimer.CurrentValue > 0;
+
+    #endregion
 
     private void Awake()
     {
@@ -68,10 +82,32 @@ public class Enemy : MonoBehaviour, IActor
     {
         // If the invincibility timer is active,
         // and the amount is negative, return
-        if (actorInfo.InvincibilityTimer.CurrentValue > 0 && amount < 0)
+        if (IsInvincible && amount < 0)
+            return;
+        
+        // Return if the amount is 0
+        if (amount == 0)
             return;
 
+        // Change the health value
         actorInfo.Health.ChangeValue(amount);
+
+        // Create the event args
+        var eventArgs = new ActorHealthEventArgs
+        {
+            Actor = this,
+            Amount = amount,
+            IsDamage = amount < 0
+        };
+
+        // Invoke the appropriate event
+        if (amount < 0)
+        {
+            eventArgs.Amount = Mathf.Abs(amount);
+            onDamaged?.Invoke(eventArgs);
+        }
+        else
+            onHealed?.Invoke(eventArgs);
     }
 
     public void SetInvincibleForSeconds(float seconds)

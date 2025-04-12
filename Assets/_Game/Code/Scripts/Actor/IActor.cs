@@ -1,5 +1,9 @@
-﻿public interface IActor
+﻿using UnityEngine;
+
+public interface IActor
 {
+    public GameObject GameObject { get; }
+    
     public ActorInfo ActorInfo { get; }
     
     public void ChangeHealth(float amount);
