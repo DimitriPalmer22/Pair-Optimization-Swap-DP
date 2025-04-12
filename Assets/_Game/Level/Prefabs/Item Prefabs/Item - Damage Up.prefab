@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 601365304944263737, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5aa2c2f428070344fb6a49e8eb621b9d, type: 2}
+    - target: {fileID: 1011640123915020202, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: m_Color.b
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011640123915020202, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: m_Color.g
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011640123915020202, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: m_Color.r
+      value: 0.81568635
+      objectReference: {fileID: 0}
     - target: {fileID: 1860494123605502392, guid: d577079df343767418e6bc296f923f95, type: 3}
       propertyPath: itemEffects.Array.size
       value: 1
@@ -20,6 +36,10 @@ PrefabInstance:
       propertyPath: onEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Damage Up!
       objectReference: {fileID: 0}
+    - target: {fileID: 2968991369477500245, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5aa2c2f428070344fb6a49e8eb621b9d, type: 2}
     - target: {fileID: 3378689331797581864, guid: d577079df343767418e6bc296f923f95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -64,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item - Damage Up
       objectReference: {fileID: 0}
+    - target: {fileID: 8966538782318165523, guid: d577079df343767418e6bc296f923f95, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5aa2c2f428070344fb6a49e8eb621b9d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
