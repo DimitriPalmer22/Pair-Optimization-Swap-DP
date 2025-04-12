@@ -6,6 +6,7 @@ public class PlayerProjectile : MonoBehaviour
     #region Serialized Fields
 
     [SerializeField] private float moveSpeed = 8;
+    [SerializeField] private float damage = 25;
 
     [SerializeField] private RangedValue lifeTime;
 
@@ -45,7 +46,14 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // TODO: Implement collision logic
+        // If the other object has the enemy tag
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            // Try to get the Enemy component
+            // Deal damage to the enemy
+            if (other.TryGetComponent(out Enemy enemy))
+                enemy.ChangeHealth(-damage);
+        }
         
         // Kill the projectile
         KillProjectile();
