@@ -75,12 +75,22 @@ public class PlayerController : MonoBehaviour
         var move = new Vector3(_moveInput.x, 0, _moveInput.y);
 
         // Convert the move vector to world space
-        _moveDirection = transform.TransformDirection(move);
+        // _moveDirection = transform.TransformDirection(move);
+        _moveDirection = move;
 
         // Normalize the move direction
         _moveDirection.Normalize();
 
         // Move the character controller
         _characterController.Move(_moveDirection * (moveSpeed * Time.deltaTime));
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw the forward direction of the player
+        var forward = transform.forward;
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, forward * 2f);
     }
 }

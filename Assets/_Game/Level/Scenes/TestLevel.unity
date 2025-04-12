@@ -699,6 +699,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1618707518274165000, guid: 7239bf5a675794546bc3e47e4d057705, type: 3}
+      propertyPath: cinemachineBrain
+      value: 
+      objectReference: {fileID: 503027882}
     - target: {fileID: 2253583813700644746, guid: 7239bf5a675794546bc3e47e4d057705, type: 3}
       propertyPath: m_Name
       value: Player

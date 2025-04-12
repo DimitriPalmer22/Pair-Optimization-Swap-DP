@@ -1,6 +1,7 @@
 ﻿using System;
 using Alchemy.Inspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable, FoldoutGroup]
 public class PlayerInfo

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2052233017901035974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809120704849199113}
+  m_Layer: 7
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809120704849199113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052233017901035974}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3555143696161295930}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2253583813700644746
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +46,8 @@ GameObject:
   - component: {fileID: 5173471267473752097}
   - component: {fileID: 8400915446146549800}
   - component: {fileID: 2293818892722577488}
-  m_Layer: 0
+  - component: {fileID: 1618707518274165000}
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +66,8 @@ Transform:
   m_LocalPosition: {x: -1599.538, y: 8233.6875, z: 26480.877}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1809120704849199113}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2519239835566495395
@@ -153,18 +186,57 @@ MonoBehaviour:
   playerInfo:
     <Health>k__BackingField:
       <MinValue>k__BackingField: 0
-      <MaxValue>k__BackingField: 0
-      <CurrentValue>k__BackingField: 0
+      <MaxValue>k__BackingField: 100
+      <CurrentValue>k__BackingField: 100
       <OnValueChanged>k__BackingField:
         m_PersistentCalls:
-          m_Calls: []
+          m_Calls:
+          - m_Target: {fileID: 8400915446146549800}
+            m_TargetAssemblyTypeName: Player, Assembly-CSharp
+            m_MethodName: LogPlayerHealth
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 8400915446146549800}
+            m_TargetAssemblyTypeName: Player, Assembly-CSharp
+            m_MethodName: CheckForDeath
+            m_Mode: 0
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
     <DodgeCooldown>k__BackingField:
       <MinValue>k__BackingField: 0
-      <MaxValue>k__BackingField: 0
-      <CurrentValue>k__BackingField: 0
+      <MaxValue>k__BackingField: 1
+      <CurrentValue>k__BackingField: 1
       <OnValueChanged>k__BackingField:
         m_PersistentCalls:
           m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 88944dd581488444b9e936d0185e3a9b, type: 2}
+        m_TargetAssemblyTypeName: LoggerScriptableObject, Assembly-CSharp
+        m_MethodName: Log
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PLAYER DIED
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2293818892722577488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +250,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+--- !u!114 &1618707518274165000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253583813700644746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fcd25f4f5c4567a26ea7c756d1b677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 0}
+  firePoint: {fileID: 1809120704849199113}
+  projectilePrefab: {fileID: 8985838993021638207, guid: 6273085c6f9e15e4c8bdb2ee029d2406, type: 3}
+  rotationSpeed: 100
+  attackCooldown:
+    <MinValue>k__BackingField: 0
+    <MaxValue>k__BackingField: 0.25
+    <CurrentValue>k__BackingField: 0
+    <OnValueChanged>k__BackingField:
+      m_PersistentCalls:
+        m_Calls: []
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
