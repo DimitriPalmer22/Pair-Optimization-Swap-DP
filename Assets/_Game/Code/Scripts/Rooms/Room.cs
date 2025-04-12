@@ -7,6 +7,10 @@ using UnityEngine.Serialization;
 
 public class Room : MonoBehaviour
 {
+    public static int RoomCount { get; private set; }
+    
+    #region Serialized Fields
+    
     [SerializeField] private RoomStructureData roomStructureData;
 
     [SerializeField, Range(0, 1)] private float itemSpawnChance = 0.5f;
@@ -17,6 +21,8 @@ public class Room : MonoBehaviour
     [SerializeField] private UnityEvent<Room> onRoomStarted;
     [SerializeField] private UnityEvent<Room> onRoomCleared;
 
+    #endregion
+        
     #region Private Fields
 
     private int _remainingEnemyCount;
@@ -44,9 +50,20 @@ public class Room : MonoBehaviour
             Destroy(_previousRoom.gameObject);
             _previousRoom = null;
         }
+        
+        // Increment the room count
+        RoomCount++;
+        
+        // Invoke the room started event
+        onRoomStarted.Invoke(this);
 
         // Spawn the enemies
         SpawnEnemies();
+    }
+    
+    public void BroadcastRoomCount(LoggerScriptableObject logger)
+    {
+        logger.BroadcastLog($"Room #{RoomCount}");
     }
 
     private void ClearRoom()
