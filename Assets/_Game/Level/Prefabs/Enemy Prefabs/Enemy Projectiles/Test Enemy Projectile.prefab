@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  damage: 25
+  damage: 20
   lifeTime:
     <MinValue>k__BackingField: 0
     <MaxValue>k__BackingField: 10
