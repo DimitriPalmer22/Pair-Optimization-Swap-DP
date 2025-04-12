@@ -9,6 +9,8 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private RoomStructureData roomStructureData;
 
+    [SerializeField, Required] private RoomPrefabList nextRooms;
+
     [SerializeField] private UnityEvent<Room> onRoomStarted;
     [SerializeField] private UnityEvent<Room> onRoomCleared;
 
@@ -16,7 +18,9 @@ public class Room : MonoBehaviour
 
     private int _remainingEnemyCount;
     private bool _isRoomCleared;
-    
+    private bool _isNextRoomSpawned;
+    private Room _previousRoom;
+
     private readonly HashSet<Enemy> _managedEnemies = new();
 
     #endregion
@@ -31,6 +35,13 @@ public class Room : MonoBehaviour
             return;
         }
         
+        // If the previous room is not null, destroy it
+        if (_previousRoom != null)
+        {
+            Destroy(_previousRoom.gameObject);
+            _previousRoom = null;
+        }
+
         // Spawn the enemies
         SpawnEnemies();
     }
@@ -60,7 +71,7 @@ public class Room : MonoBehaviour
             Debug.LogWarning("No enemy spawners found in the room structure data.", this);
             return;
         }
-        
+
         // Return if the room is already cleared
         if (_isRoomCleared)
         {
@@ -93,27 +104,54 @@ public class Room : MonoBehaviour
 
         // Manage the enemy
         _managedEnemies.Add(enemy);
-        
+
         // Subscribe to the enemy's death event
         enemy.onDeath.AddListener(OnEnemyDeath);
-        
+
         // Increment the remaining enemy count
         _remainingEnemyCount++;
     }
 
-    private void OnEnemyDeath(Enemy arg0)
+    private void OnEnemyDeath(Enemy enemy)
     {
         // Remove this enemy from the managed enemies
-        _managedEnemies.Remove(arg0);
-        
+        _managedEnemies.Remove(enemy);
+
         // Decrement the remaining enemy count
         _remainingEnemyCount--;
-        
-        Debug.Log($"Remaining enemies: {_remainingEnemyCount}", this);
-        
+
         // If the remaining enemy count is 0, clear the room
         if (_remainingEnemyCount <= 0)
             ClearRoom();
+    }
+
+    [Button]
+    public void SpawnNextRoom()
+    {
+        // Return if the next room is already spawned
+        if (_isNextRoomSpawned)
+        {
+            Debug.LogWarning("Next room is already spawned. Cannot spawn again.", this);
+            return;
+        }
+
+        // Set the next room as spawned
+        _isNextRoomSpawned = true;
+
+        // Instantiate the next room prefab
+        // Get a random room prefab from the list
+        var roomPrefabs = nextRooms.RoomPrefabs;
+        var randomRoomPrefab = roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Count)];
+        var nextRoom = Instantiate(randomRoomPrefab, Vector3.zero, Quaternion.identity);
+
+        // Get the position offset from the next room's position and its left door
+        var nextRoomOffset = nextRoom.transform.position - nextRoom.roomStructureData.leftDoorTransform.position;
+        
+        // Set the next room's position to be right next to this room's right door
+        nextRoom.transform.position = roomStructureData.rightDoorTransform.position + nextRoomOffset;
+        
+        // Set the next room's previous room to this room
+        nextRoom._previousRoom = this;
     }
 
     private void OnDrawGizmos()
