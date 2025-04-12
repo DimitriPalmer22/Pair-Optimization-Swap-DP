@@ -23,6 +23,8 @@ public class RangedValue
     public UnityEvent<RangedValue> OnValueChanged { get; private set; }
 
     #endregion
+    
+    public float Percentage => Mathf.InverseLerp(MinValue, MaxValue, CurrentValue);
 
     [Button, TabGroup(TAB_GROUP, "Functions")]
     public bool SetValue(float value)

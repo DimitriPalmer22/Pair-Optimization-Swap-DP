@@ -6,8 +6,9 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour, IActor
 {
-    [SerializeField] private ActorInfo actorInfo;
+    public static Player Instance { get; private set; }
 
+    [SerializeField] private ActorInfo actorInfo;
     [SerializeField] private UnityEvent<Player> onDeath;
 
     public ActorInfo ActorInfo => actorInfo;
@@ -16,6 +17,22 @@ public class Player : MonoBehaviour, IActor
     {
         // Set the initial health value
         actorInfo.Health.SetValue(actorInfo.Health.MaxValue);
+
+        // Subscribe to the health value changed event
+        actorInfo.Health.OnValueChanged.AddListener(CheckForDeath);
+    }
+
+    private void OnEnable()
+    {
+        // Set the instance to this
+        Instance = this;
+    }
+
+    private void OnDisable()
+    {
+        // Unset the instance
+        if (Instance == this)
+            Instance = null;
     }
 
     #region Public Functions

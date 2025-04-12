@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     #region Serialized Fields
 
@@ -18,18 +18,9 @@ public class PlayerProjectile : MonoBehaviour
     {
         // Set the initial lifetime value
         lifeTime.SetValue(lifeTime.MaxValue);
-        
+
         // Destroy the projectile after its lifetime has expired
         lifeTime.OnValueChanged.AddListener(CheckForLifeTime);
-    }
-
-    private void Update()
-    {
-        // Update the projectile's position based on the direction
-        transform.position += _direction * (Time.deltaTime * moveSpeed);
-
-        // Tick down the lifetime of the projectile
-        lifeTime.ChangeValue(-Time.deltaTime);
     }
 
     private void CheckForLifeTime(RangedValue value)
@@ -47,22 +38,16 @@ public class PlayerProjectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        // If the other object has the enemy tag
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            // Try to get the Enemy component
-            // Deal damage to the enemy
-            if (other.TryGetComponent(out Enemy enemy))
-                enemy.ChangeHealth(-damage);
-        }
+        // Update the projectile's position based on the direction
+        transform.position += _direction * (Time.deltaTime * moveSpeed);
 
-        // Kill the projectile
-        KillProjectile();
+        // Tick down the lifetime of the projectile
+        lifeTime.ChangeValue(-Time.deltaTime);
     }
 
-    public void Shoot(PlayerAttack playerAttack, Vector3 startPosition, Vector3 direction)
+    public void Shoot(EnemyAttack enemyAttack, Vector3 startPosition, Vector3 direction)
     {
         // Set the current lifetime to the maximum value
         lifeTime.SetValue(lifeTime.MaxValue);
@@ -73,7 +58,20 @@ public class PlayerProjectile : MonoBehaviour
         // Set the direction of the projectile
         _direction = direction;
 
-        // Modify the damage
-        damage += playerAttack.DamageAdded.CurrentValue;
+        // // Modify the damage
+        // damage += playerAttack.DamageAdded.CurrentValue;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Try to get the Player component
+            // Deal damage to the player
+            if (other.TryGetComponent(out Player player))
+                player.ChangeHealth(-damage);
+        }
+
+        KillProjectile();
     }
 }
