@@ -7,8 +7,6 @@ using UnityEngine.Serialization;
 
 public class Room : MonoBehaviour
 {
-    public static int RoomCount { get; private set; }
-
     #region Serialized Fields
 
     [SerializeField] private RoomStructureData roomStructureData;
@@ -58,7 +56,7 @@ public class Room : MonoBehaviour
         }
 
         // Increment the room count
-        RoomCount++;
+        GameManager.Instance.CurrentRoomCount++;
 
         // Invoke the room started event
         onRoomStarted.Invoke(this);
@@ -69,7 +67,7 @@ public class Room : MonoBehaviour
 
     public void BroadcastRoomCount(LoggerScriptableObject logger)
     {
-        logger.BroadcastLog($"Room #{RoomCount}");
+        logger.BroadcastLog($"Room #{GameManager.Instance.CurrentRoomCount}");
     }
 
     private void ClearRoom()

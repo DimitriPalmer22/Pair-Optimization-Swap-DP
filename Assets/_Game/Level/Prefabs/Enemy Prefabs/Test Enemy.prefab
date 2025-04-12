@@ -239,7 +239,7 @@ MonoBehaviour:
   firePoint: {fileID: 4639429661705198443}
   attackCooldown:
     <MinValue>k__BackingField: 0
-    <MaxValue>k__BackingField: 1
+    <MaxValue>k__BackingField: 1.25
     <CurrentValue>k__BackingField: 1
     <OnValueChanged>k__BackingField:
       m_PersistentCalls:
